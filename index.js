@@ -1,14 +1,21 @@
 
 const express = require("express");
 const app = express();
-const http = require("http");
+const https = require("http");
 const {Server} = require("socket.io");
 const cors = require("cors")
-
+const fs = require("fs")
+//const https = require("https")
 
 app.use(cors());
 
-const server = http.createServer(app);
+
+const options = {
+    key: fs.readFileSync("/etc/letsencrypt/live/yourdomain.com/privkey.pem"),
+    cert: fs.readFileSync("/etc/letsencrypt/live/yourdomain.com/cert.pem")
+}
+
+const server = https.createServer(options, app);
 
 let baseTime = 600;
 let serverTime = 1000;
@@ -16,7 +23,7 @@ let timeRunning = true;
 
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "https://timer.deltanoise.net",
         methods: ["Get", "POST"]
     }
 });
