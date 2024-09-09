@@ -11,8 +11,8 @@ app.use(cors());
 
 
 const options = {
-    key: fs.readFileSync("/etc/letsencrypt/live/yourdomain.com/privkey.pem"),
-    cert: fs.readFileSync("/etc/letsencrypt/live/yourdomain.com/cert.pem")
+    key: fs.readFileSync("/etc/letsencrypt/live/server.deltanoise.com/privkey.pem"),
+    cert: fs.readFileSync("/etc/letsencrypt/live/server.deltanoise.com/cert.pem")
 }
 
 const server = https.createServer(options, app);
