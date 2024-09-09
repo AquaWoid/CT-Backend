@@ -28,7 +28,8 @@ const io = new Server(server, {
     cors: {
         origin: "https://timer.deltanoise.net",
         methods: ["GET", "POST"]
-    }
+    },
+    transports : ["websocket"]
 });
 
 io.on("connection", (socket) => {
