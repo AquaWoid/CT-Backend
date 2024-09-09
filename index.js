@@ -8,8 +8,7 @@ const fs = require("fs")
 //const https = require("https")
 
 app.use(cors({
-    origin: "https://timer.deltanoise.net",
-    methods: ["GET", "POST"],
+
 }));
 
 const options = {
