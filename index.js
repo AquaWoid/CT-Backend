@@ -7,8 +7,10 @@ const cors = require("cors")
 const fs = require("fs")
 //const https = require("https")
 
-app.use(cors());
-
+app.use(cors({
+    origin: "https://timer.deltanoise.net",
+    methods: ["GET", "POST"]
+}));
 
 const options = {
     key: fs.readFileSync("/etc/letsencrypt/live/server.deltanoise.net/privkey.pem"),
@@ -24,7 +26,7 @@ let timeRunning = true;
 const io = new Server(server, {
     cors: {
         origin: "https://timer.deltanoise.net",
-        methods: ["Get", "POST"]
+        methods: ["GET", "POST"]
     }
 });
 
