@@ -59,7 +59,7 @@ io.on("connection", (socket) => {
     })
 })
 
-server.listen(3001, () => {
+server.listen(443, () => {
     console.log("Server Running");
 });
 
