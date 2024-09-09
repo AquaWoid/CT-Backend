@@ -8,7 +8,8 @@ const fs = require("fs")
 //const https = require("https")
 
 app.use(cors({
-
+    origin: "https://timer.deltanoise.net",
+    methods: ["GET", "POST"],
 }));
 
 const options = {
@@ -23,7 +24,13 @@ let serverTime = 1000;
 let timeRunning = true;
 
 const io = new Server(server, {
-    transports : ["websocket"]
+    cors: {
+        origin: "https://timer.deltanoise.net",
+        methods: ["GET", "POST"],
+        transports : ["websocket","polling"],
+        credentials: true
+    }
+
 });
 
 io.on("connection", (socket) => {
