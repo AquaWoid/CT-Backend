@@ -47,8 +47,6 @@ io.on("connection", (socket) => {
     socket.on("request_server_time", () => {
         console.log(serverTime)
         socket.emit("receive_server_time", serverTime);
-        socket.emit("receive_red_limit", red_limit);
-        socket.emit("receive_yellow_limit", yellow_limit);
     })
 
     socket.on("send_message", (data) => {
@@ -67,10 +65,12 @@ io.on("connection", (socket) => {
 
     socket.on("set_red_limit", (limit) => {
         red_limit += limit;
+        socket.emit("receive_red_limit", red_limit);
     })
 
     socket.on("set_yellow_limit", (limit) => {
         yellow_limit += limit;
+        socket.emit("receive_yellow_limit", yellow_limit);
     })
 
 })
