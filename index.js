@@ -75,6 +75,11 @@ io.on("connection", (socket) => {
 
     })
 
+    socket.on("request_limits", () => {
+        socket.emit("receive_yellow_limit", yellow_limit);
+        socket.emit("receive_red_limit", red_limit);
+    }) 
+
 })
 
 server.listen(3001, () => {
