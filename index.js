@@ -65,13 +65,13 @@ io.on("connection", (socket) => {
 
     socket.on("set_red_limit", (limit) => {
         red_limit += limit;
-        socket.emit("receive_red_limit", red_limit);
+        io.emit("receive_red_limit", red_limit);
 
     })
 
     socket.on("set_yellow_limit", (limit) => {
         yellow_limit += limit;
-        socket.emit("receive_yellow_limit", yellow_limit);
+        io.emit("receive_yellow_limit", yellow_limit);
 
     })
 
