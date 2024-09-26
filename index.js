@@ -22,6 +22,8 @@ const server = https.createServer(options, app);
 let baseTime = 600;
 let serverTime = 1000;
 let timeRunning = true;
+let yellow_limit = 5;
+let red_limit = 1;
 
 const io = new Server(server, {
     cors: {
@@ -60,6 +62,17 @@ io.on("connection", (socket) => {
         serverTime = baseTime;
         socket.emit("receive_server_time", serverTime);
     })
+
+    socket.on("set_red_limit", (limit) => {
+        red_limit += limit;
+        socket.emit("receive_red_limit", red_limit)
+    })
+
+    socket.on("set_yellow_limit", (limit) => {
+        yellow_limit += limit;
+        socket.emit("receive_yellow_limit", yellow_limit)
+    })
+
 })
 
 server.listen(3001, () => {
