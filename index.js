@@ -92,6 +92,6 @@ async function timerLogic(){
     timeRunning = false;
   }
 
-  console.log("Server Timer Running: " + serverTime)
+  console.log(serverTime)
 
 }
