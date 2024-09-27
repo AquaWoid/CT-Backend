@@ -39,6 +39,8 @@ io.on("connection", (socket) => {
 
     console.log(`User Connected: ${socket.id}`);
 
+    console.log("Current connections: " + io.engine.clientsCount)
+
     socket.on("set_server_time", (inputTime) => {
         serverTime += inputTime;
         socket.emit("receive_server_time", serverTime);
