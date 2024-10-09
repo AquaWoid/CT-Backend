@@ -19,7 +19,7 @@ const options = {
 
 const server = https.createServer(options, app);
 
-let baseTime = 600;
+let baseTime = 900;
 let serverTime = 1000;
 let timeRunning = true;
 let yellow_limit = 5;
